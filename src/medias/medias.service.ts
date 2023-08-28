@@ -10,6 +10,9 @@ export class MediasService {
 
   async create(createMediaDto: CreateMediaDto) {
     const media = await this.mediasRepository.getMediaByUsername(createMediaDto.username);
+    if(!media){
+      return await this.mediasRepository.createMedia(createMediaDto);
+    }
     if (media.title === createMediaDto.title) {
       throw new ConflictException();
     }
