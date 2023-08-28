@@ -1,6 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreatePublicationDto } from './create-publication.dto';
-import { IsDate, IsNotEmpty, IsNumber } from "class-validator";
+import { IsDate, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
 export class UpdatePublicationDto extends PartialType(CreatePublicationDto) {
     @IsNumber()
@@ -11,7 +11,7 @@ export class UpdatePublicationDto extends PartialType(CreatePublicationDto) {
     @IsNotEmpty()
     postId: number;
     
-    @IsDate()
+    @IsString()
     @IsNotEmpty()
     date: string;
 }
