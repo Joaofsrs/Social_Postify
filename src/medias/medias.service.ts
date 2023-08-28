@@ -10,7 +10,7 @@ export class MediasService {
 
   async create(createMediaDto: CreateMediaDto) {
     const media = await this.mediasRepository.getMediaByUsername(createMediaDto.username);
-    if(media.title === createMediaDto.title){
+    if (media.title === createMediaDto.title) {
       throw new ConflictException();
     }
     return await this.mediasRepository.createMedia(createMediaDto);
@@ -22,7 +22,7 @@ export class MediasService {
 
   async findOne(id: number) {
     const media = await this.mediasRepository.getMediaById(id);
-    if(!media){
+    if (!media) {
       throw new NotFoundException();
     }
     return media;
@@ -30,11 +30,11 @@ export class MediasService {
 
   async update(id: number, updateMediaDto: UpdateMediaDto) {
     const media = await this.mediasRepository.getMediaById(id);
-    if(!media){
+    if (!media) {
       throw new NotFoundException();
     }
     const mediaByUsername = await this.mediasRepository.getMediaByUsername(updateMediaDto.username);
-    if(mediaByUsername.title === updateMediaDto.title){
+    if (mediaByUsername.title === updateMediaDto.title) {
       throw new ConflictException();
     }
     return this.mediasRepository.updateMedia(id, updateMediaDto);
@@ -42,7 +42,7 @@ export class MediasService {
 
   async remove(id: number) {
     const media = await this.mediasRepository.getMediaById(id);
-    if(!media){
+    if (!media) {
       throw new NotFoundException();
     }
     return this.mediasRepository.deleteMedia(id);

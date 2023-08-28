@@ -4,21 +4,21 @@ import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
 
 @Injectable()
-export class MediasRepository {
+export class PostsRepository {
 
   constructor(private readonly prisma: PrismaService) { }
 
-  async createMedia(createPostDto: CreatePostDto) {
+  async createPost(createPostDto: CreatePostDto) {
     return await this.prisma.posts.create({
       data: createPostDto
     });
   }
 
-  async getMedia() {
+  async getPost() {
     return await this.prisma.posts.findMany({});
   }
 
-  async getMediaById(id: number) {
+  async getPostById(id: number) {
     return await this.prisma.posts.findFirst({
       where: {
         id
@@ -26,14 +26,14 @@ export class MediasRepository {
     });
   }
 
-  async updateMedia(id: number, updatePostDto: UpdatePostDto){
+  async updatePost(id: number, updatePostDto: UpdatePostDto){
     return await this.prisma.posts.update({
       data: updatePostDto,
       where:{ id }
     });
   }
 
-  async deleteMedia(id: number) {
+  async deletePost(id: number) {
     return await this.prisma.posts.delete({
       where:{ id }
     });
