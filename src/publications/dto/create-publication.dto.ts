@@ -3,11 +3,11 @@ import { IsDate, IsNotEmpty, IsNumber } from "class-validator";
 export class CreatePublicationDto {
     @IsNumber()
     @IsNotEmpty()
-    mediaId: string;
+    mediaId: number;
 
     @IsNumber()
     @IsNotEmpty()
-    postId: string;
+    postId: number;
     
     @IsDate()
     @IsNotEmpty()

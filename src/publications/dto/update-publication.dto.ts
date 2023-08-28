@@ -5,11 +5,11 @@ import { IsDate, IsNotEmpty, IsNumber } from "class-validator";
 export class UpdatePublicationDto extends PartialType(CreatePublicationDto) {
     @IsNumber()
     @IsNotEmpty()
-    mediaId: string;
+    mediaId: number;
 
     @IsNumber()
     @IsNotEmpty()
-    postId: string;
+    postId: number;
     
     @IsDate()
     @IsNotEmpty()
